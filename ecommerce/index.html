@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern E-Commerce</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h1>ShopEase</h1>
+            </div>
+            <div class="nav-menu">
+                <a href="#" class="nav-link active" data-page="home">Home</a>
+                <a href="#" class="nav-link" data-page="products">Products</a>
+                <a href="#" class="nav-link" data-page="cart">Cart</a>
+                <a href="#" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-search">
+                <input type="text" id="searchInput" placeholder="Search products...">
+                <button id="searchBtn">🔍</button>
+            </div>
+            <div class="nav-icons">
+                <button id="wishlistBtn" class="nav-icon">❤️ <span id="wishlistCount">0</span></button>
+                <button id="cartBtn" class="nav-icon">🛒 <span id="cartCount">0</span></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb Navigation -->
+    <div class="breadcrumb-container">
+        <div class="breadcrumb">
+            <span id="breadcrumbContent">Home</span>
+        </div>
+        <button id="backBtn" class="back-btn" style="display: none;">
+            ← Back
+        </button>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">Item added to cart!</div>
+
+    <!-- Home Page -->
+    <section id="home" class="page active">
+        <div class="hero">
+            <div class="hero-slider">
+                <div class="slide active" style="background-image: linear-gradient(rgba(0, 15, 255, 0.3), rgba(0, 0, 139, 0.5)), url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&h=600&fit=crop');">
+                    <div class="slide-content">
+                        <h2>Welcome to ShopEase</h2>
+                        <p>Discover amazing products at great prices</p>
+                        <button class="btn-primary">Shop Now</button>
+                    </div>
+                </div>
+                <div class="slide" style="background-image: linear-gradient(rgba(0, 187, 249, 0.3), rgba(0, 111, 252, 0.5)), url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&h=600&fit=crop');">
+                    <div class="slide-content">
+                        <h2>Premium Quality</h2>
+                        <p>Only the best products for you</p>
+                        <button class="btn-primary">Explore</button>
+                    </div>
+                </div>
+                <div class="slide" style="background-image: linear-gradient(rgba(0, 240, 255, 0.3), rgba(0, 187, 249, 0.5)), url('https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?w=1200&h=600&fit=crop');">
+                    <div class="slide-content">
+                        <h2>Fast Delivery</h2>
+                        <p>Get your orders delivered quickly</p>
+                        <button class="btn-primary">Order Now</button>
+                    </div>
+                </div>
+                <div class="slide" style="background-image: linear-gradient(rgba(0, 111, 252, 0.3), rgba(0, 15, 255, 0.5)), url('https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1200&h=600&fit=crop');">
+                    <div class="slide-content">
+                        <h2>Exclusive Deals</h2>
+                        <p>Up to 50% off on selected items</p>
+                        <button class="btn-primary">View Deals</button>
+                    </div>
+                </div>
+                <div class="slide" style="background-image: linear-gradient(rgba(0, 0, 139, 0.3), rgba(0, 240, 255, 0.5)), url('https://images.unsplash.com/photo-1556742111-a301076d9d18?w=1200&h=600&fit=crop');">
+                    <div class="slide-content">
+                        <h2>New Arrivals</h2>
+                        <p>Check out our latest collection</p>
+                        <button class="btn-primary">Browse New</button>
+                    </div>
+                </div>
+            </div>
+            <button class="slider-arrow prev-arrow">❮</button>
+            <button class="slider-arrow next-arrow">❯</button>
+            <div class="slider-dots">
+                <span class="dot active" data-slide="0"></span>
+                <span class="dot" data-slide="1"></span>
+                <span class="dot" data-slide="2"></span>
+                <span class="dot" data-slide="3"></span>
+                <span class="dot" data-slide="4"></span>
+            </div>
+        </div>
+
+        <div class="categories">
+            <h2>Shop by Category</h2>
+            <div class="category-grid">
+                <div class="category-card" data-category="electronics">
+                    <img src="https://images.unsplash.com/photo-1498049794561-7780e7231661?w=200&h=200&fit=crop&crop=center" alt="Electronics">
+                    <h3>Electronics</h3>
+                </div>
+                <div class="category-card" data-category="clothing">
+                    <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?w=200&h=200&fit=crop&crop=center" alt="Clothing">
+                    <h3>Clothing</h3>
+                </div>
+                <div class="category-card" data-category="home">
+                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=200&h=200&fit=crop&crop=center" alt="Home">
+                    <h3>Home & Garden</h3>
+                </div>
+                <div class="category-card" data-category="beauty">
+                    <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=200&h=200&fit=crop&crop=center" alt="Beauty">
+                    <h3>Beauty</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="featured-products">
+            <h2>Featured Products</h2>
+            <div id="featuredGrid" class="product-grid">
+                <!-- Featured products will be populated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Listing Page -->
+    <section id="products" class="page">
+        <div class="filters">
+            <div class="filter-group">
+                <label for="categoryFilter">Category:</label>
+                <select id="categoryFilter">
+                    <option value="">All Categories</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="clothing">Clothing</option>
+                    <option value="home">Home & Garden</option>
+                    <option value="beauty">Beauty</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="sortFilter">Sort by:</label>
+                <select id="sortFilter">
+                    <option value="name">Name</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                    <option value="rating">Rating</option>
+                </select>
+            </div>
+        </div>
+        <div id="productGrid" class="product-grid">
+            <!-- Products will be populated by JS -->
+        </div>
+    </section>
+
+    <!-- Product Details Page -->
+    <section id="productDetails" class="page">
+        <div class="product-detail-container">
+            <div class="product-image">
+                <img id="productImg" src="" alt="Product Image">
+            </div>
+            <div class="product-info">
+                <h1 id="productName"></h1>
+                <div class="rating" id="productRating"></div>
+                <p class="price" id="productPrice"></p>
+                <p id="productDescription"></p>
+                <div class="quantity-selector">
+                    <button id="decreaseQty">-</button>
+                    <span id="quantity">1</span>
+                    <button id="increaseQty">+</button>
+                </div>
+                <div class="product-actions">
+                    <button id="addToCartBtn" class="btn-primary">Add to Cart</button>
+                    <button id="buyNowBtn" class="btn-secondary">Buy Now</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Customer Reviews -->
+        <div class="reviews-section">
+            <h2>Customer Reviews</h2>
+            <div class="reviews-container">
+                <div id="reviewsGrid" class="reviews-grid">
+                    <!-- Reviews will be populated by JS -->
+                </div>
+            </div>
+            <div class="write-review">
+                <button class="btn-secondary" id="writeReviewBtn">Write a Review</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Page -->
+    <section id="cart" class="page">
+        <div class="page-header">
+            <button class="back-btn" onclick="showPage('products')">← Back to Products</button>
+            <h2>Your Cart</h2>
+        </div>
+        <div id="cartItems">
+            <!-- Cart items will be populated by JS -->
+        </div>
+        <div id="cartSummary" class="cart-summary">
+            <p>Subtotal: $<span id="subtotal">0.00</span></p>
+            <p>Total: $<span id="total">0.00</span></p>
+            <button id="checkoutBtn" class="btn-primary">Proceed to Checkout</button>
+        </div>
+    </section>
+
+    <!-- Checkout Page -->
+    <section id="checkout" class="page">
+        <div class="page-header">
+            <button class="back-btn" onclick="showPage('cart')">← Back to Cart</button>
+            <h2>Checkout</h2>
+        </div>
+        <div class="checkout-container">
+            <form id="checkoutForm" class="checkout-form">
+                <h3>Shipping Information</h3>
+                <input type="text" id="name" placeholder="Full Name" required>
+                <input type="text" id="address" placeholder="Address" required>
+                <input type="tel" id="phone" placeholder="Phone Number" required>
+                <h3>Payment Method</h3>
+                <div class="payment-methods">
+                    <label><input type="radio" name="payment" value="cod" checked> Cash on Delivery</label>
+                    <label><input type="radio" name="payment" value="card"> Credit/Debit Card</label>
+                </div>
+                <button type="submit" class="btn-primary">Place Order</button>
+            </form>
+            <div class="order-summary">
+                <h3>Order Summary</h3>
+                <div id="orderItems">
+                    <!-- Order items will be populated by JS -->
+                </div>
+                <p class="total">Total: $<span id="orderTotal">0.00</span></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Success Page -->
+    <section id="orderSuccess" class="page">
+        <div class="page-header">
+            <button class="back-btn" onclick="showPage('home')">← Back to Home</button>
+        </div>
+        <div class="success-container">
+            <h2>🎉 Order Placed Successfully!</h2>
+            <p>Thank you for shopping with us. Your order has been confirmed.</p>
+            <div class="order-summary">
+                <h3>Order Details</h3>
+                <div id="successOrderItems">
+                    <!-- Order items will be populated by JS -->
+                </div>
+                <p class="total">Total: $<span id="successTotal">0.00</span></p>
+            </div>
+            <button id="continueShoppingBtn" class="btn-primary">Continue Shopping</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>ShopEase is your premier destination for quality products. We offer a wide range of electronics, clothing, home goods, and beauty products with fast delivery and excellent customer service.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#" class="footer-link" data-page="home">Home</a></li>
+                    <li><a href="#" class="footer-link" data-page="products">Products</a></li>
+                    <li><a href="#" class="footer-link" data-page="cart">Cart</a></li>
+                    <li><a href="#" class="footer-link">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <ul>
+                    <li><i class="contact-icon">📧</i> support@shopease.com</li>
+                    <li><i class="contact-icon">📞</i> +1 (555) 123-4567</li>
+                    <li><i class="contact-icon">📍</i> 123 Commerce St, Shop City, SC 12345</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#" class="social-icon">📘</a>
+                    <a href="#" class="social-icon">🐦</a>
+                    <a href="#" class="social-icon">📷</a>
+                    <a href="#" class="social-icon">💼</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 ShopEase. All rights reserved. | Designed with ❤️ for shopping</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
